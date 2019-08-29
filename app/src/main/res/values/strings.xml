@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PopularMovies</string>
+    <string name="Description">Movie Poster</string>
+    <string name="menuItem_order_by">Order By</string>
+    <string name="most_popular_menuItem">Most Popular</string>
+    <string name="top_rated_menuItem">Top Rated</string>
+    <string name="Favorite">Your Favorite Movies</string>
+    <string name="authority">com.example.movieapp</string>
+</resources>
