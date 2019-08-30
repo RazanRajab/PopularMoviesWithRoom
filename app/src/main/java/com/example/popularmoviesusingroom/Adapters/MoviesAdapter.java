@@ -14,6 +14,7 @@ import com.example.popularmoviesusingroom.Model.Movie;
 import com.example.popularmoviesusingroom.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,6 +42,14 @@ public class MoviesAdapter extends
     // Pass in the tasks array into the constructor
     public MoviesAdapter(List<Movie> Movies ) {
         this.Movies = Movies;
+    }
+
+    public void setMovies(List<Movie> Movies){
+     this.Movies = Movies;
+    }
+
+    public List<Movie> getMovies(){
+        return Movies;
     }
 
     public void setItemClickListener(View.OnClickListener clickListener) {

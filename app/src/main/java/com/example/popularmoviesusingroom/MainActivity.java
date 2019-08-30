@@ -1,20 +1,16 @@
 package com.example.popularmoviesusingroom;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Movie> movies = new ArrayList<>();
     private MoviesAdapter moviesAdapter;
 
-    private LiveData<List<Movie>> favorites;
+    private ArrayList<Movie> favorites = new ArrayList<>();
 
     private AppDatabase db;
 
@@ -57,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         db = AppDatabase.getInstance(getApplicationContext());
+        setUpViewModel();
 
         setTitle("Movies");
         RecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = viewHolder.getAdapterPosition();
                 Intent n = new Intent(getApplicationContext(), MovieDetailsActivity.class);
                 Gson gson = new Gson();
-                n.putExtra(Movie.class.getName(), gson.toJson(movies.get(position)));
+                n.putExtra(Movie.class.getName(), gson.toJson(moviesAdapter.getMovies().get(position)));
                 startActivity(n);
             }
         });
@@ -94,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 getTopRatedMovies();
                 break;
             case R.id.favorite:
-                setUpViewModel();
+                moviesAdapter.setMovies(favorites);
+                moviesAdapter.notifyDataSetChanged();
                 break;
             default:
 
@@ -159,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                         results.get(i).getUser_rating()));
             }
         }
+        moviesAdapter.setMovies(movies);
         moviesAdapter.notifyDataSetChanged();
     }
     private void getTopRatedMovies() {
@@ -191,13 +190,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setUpViewModel() {
         Log.d("MyLog","setUpViewModel");
-        movies.clear();
         FavoritesViewModel viewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
         //movies.addAll(favorites);
         viewModel.getFavorites().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(List<Movie> fMovies) {
-                movies.addAll(fMovies);
+                favorites.clear();
+                favorites.addAll(fMovies);
                 moviesAdapter.notifyDataSetChanged();
             }
         });

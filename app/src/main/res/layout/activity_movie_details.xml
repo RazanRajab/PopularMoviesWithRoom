@@ -10,55 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/poster"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitXY" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_star" />
-
-                <TextView
-                    android:id="@+id/popularity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_people" />
-
-                <TextView
-                    android:id="@+id/release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_date" />
-
-                <Button
-                    android:id="@+id/add_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Add to favorite"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        <include layout="@layout/top_details_layout"/>
 
         <View
             android:layout_width="fill_parent"
@@ -68,13 +20,8 @@
             android:background="#90909090" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="Overview"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            style="@style/TextAppearance" />
 
         <TextView
             android:id="@+id/overview"
@@ -90,13 +37,8 @@
             android:background="#90909090" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="Trailers"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            style="@style/TextAppearance" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/trailersRecycler"
@@ -111,13 +53,8 @@
             android:background="#90909090" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="Reviews"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            style="@style/TextAppearance" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewsRecycler"
