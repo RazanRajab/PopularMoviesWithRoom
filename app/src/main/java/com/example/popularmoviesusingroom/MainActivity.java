@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Movie> movies = new ArrayList<>();
     private MoviesAdapter moviesAdapter;
 
-    private ArrayList<Movie> favorites = new ArrayList<>();
+    private List<Movie> favorites = new ArrayList<>();
 
     private AppDatabase db;
 
@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 moviesAdapter.notifyDataSetChanged();
                 break;
             default:
-
         }
         return super.onOptionsItemSelected(item);
     }
