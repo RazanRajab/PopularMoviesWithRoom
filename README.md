@@ -4,10 +4,13 @@ This project is an Android App to help users discover popular and recent movies 
 # The API Key 
 
 If you want to download this project, before you run it you should create API key
+
 in the Constants.java line 5
+
     public static final String YOUR_API_KEY = "you should put your own api key here";
-you should replace this string with your own API Key
-you can create one from here :
+    
+you should replace this string with your own API Key & you can create one from here :
+
 https://developers.themoviedb.org/3/getting-started/introduction
 
 # Features
